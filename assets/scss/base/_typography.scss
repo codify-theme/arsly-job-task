@@ -1,0 +1,191 @@
+@use "../abstracts" as *;
+
+/* ===========// ### THEME INFO ###
+// Name:      Azenly - Modern Agency HTML Template
+// Author:    ARSLY-TECH
+// Developer: Masirul
+// Version:   1.0
+// ------------------------------------------------
+
+// ### TABLE OF CONTENTS ###
+// 
+// 01. ABSTRACTS ............ Variables, Mixins, Animations
+// 02. BASE ................. Typography, Global, Theme
+// 03. LAYOUT ............... Header, Menu, Top-bar
+// 04. COMPONENTS ........... UI Elements, Buttons, Modals
+// 05. PAGES ................ Page-specific styles
+// ------------------------------------------------
+*/
+
+
+
+
+
+/* ### TYPOGRAPHY CSS ### */
+
+/* ### FONT FAMILY ### */
+
+
+/* Teko font */
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap');
+
+/* Kanit font */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Instrument Sans font */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
+
+/* Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+:root {
+  --font_kanit: "Kanit", sans-serif;
+  --font_awesome: 'Font Awesome 6 Free';
+  --font_teko: "Teko", sans-serif;
+  --font_instrument: "Instrument Sans", sans-serif;
+  --font_inter: "Inter", sans-serif;
+
+  /* Keeping old variable names for compatibility but pointing to new fonts */
+  --font_mona: var(--font_kanit);
+  --font_playfair: var(--font_teko);
+}
+
+/* ### DEFAULT STYLE ### */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font_mona);
+  line-height: 1;
+}
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+  color: var(--primary);
+  line-height: 1.22;
+  font-family: var(--font_playfair);
+  font-weight: 500;
+}
+
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.3s;
+  color: inherit;
+
+  &:hover {
+    color: var(--primary);
+  }
+
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+  font-family: var(--font_mona);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 160%;
+  letter-spacing: 0%;
+
+
+}
+
+strong {
+  font-weight: 500;
+}
+
+video,
+iframe,
+img {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+.medium {
+  font-weight: 600;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+
+// No Gutter
+@media #{$sm} {
+  .g-0 {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .row.g-0 {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  br {
+    display: none;
+  }
+}
+
+main {
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+h3 {
+  font-size: 32px;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+h5 {
+  font-size: 20px;
+}
+
+h6 {
+  font-size: 18px;
+}

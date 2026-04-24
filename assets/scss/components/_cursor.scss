@@ -1,0 +1,129 @@
+@use "../abstracts" as *;
+
+// ### CURSOR CSS ###
+
+// ### HIDE DEFAULT CURSOR ON DESKTOP ###
+body {
+  cursor: none;
+
+  @media only screen and (max-width: 1024px) {
+    cursor: auto;
+  }
+}
+
+// ### MOUSE FOLLOWER ###
+.mouse-follower {
+  z-index: 99999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+
+  // ### HIDE ON TOUCH DEVICES ###
+  @media only screen and (max-width: 1024px) {
+    display: none !important;
+  }
+
+  span {
+    z-index: 99999;
+    opacity: 1;
+    position: fixed;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
+    will-change: transform;
+  }
+
+  .cursor-outline {
+    height: 40px;
+    width: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                height 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                border-color 0.3s ease;
+  }
+
+  .cursor-arrow {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--theme);
+    font-size: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -50%) rotate(45deg);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  // ### ARROW MODE ###
+  &.arrow-mode {
+    .cursor-dot {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .cursor-outline {
+      border-color: var(--theme);
+      border-width: 2px;
+      background: rgba(182, 227, 4, 0.1);
+    }
+    .cursor-arrow {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  // ### HOVER STATE (General Links) ###
+  &.link-hover {
+    .cursor-outline {
+      height: 60px;
+      width: 60px;
+      border-color: var(--theme);
+      background: rgba(182, 227, 4, 0.05);
+    }
+    .cursor-dot {
+      scale: 1.5;
+    }
+    .cursor-arrow {
+      scale: 1.2;
+      color: #fff;
+    }
+  }
+
+  // ### MAGNIFY EFFECT ON HEADINGS ###
+  &.highlight-cursor-head {
+    .cursor-outline {
+      height: 0;
+      width: 0;
+    }
+    .cursor-dot {
+      height: 120px;
+      width: 120px;
+      background: #fff;
+      mix-blend-mode: difference;
+    }
+  }
+
+  // ### SOFTER EFFECT ON PARAGRAPHS ###
+  &.highlight-cursor-para {
+    .cursor-outline {
+      height: 0;
+      width: 0;
+    }
+    .cursor-dot {
+      height: 80px;
+      width: 80px;
+      background: #fff;
+      mix-blend-mode: difference;
+    }
+  }
+
+  // ### HIDE CURSOR ###
+  &.hide-cursor {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+

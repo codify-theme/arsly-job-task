@@ -1,0 +1,80 @@
+@use "../abstracts" as *;
+
+// ### SPLIT-SCREEN PRELOADER CSS ###
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  &__inner {
+    position: relative;
+    z-index: 100;
+    text-align: center;
+  }
+
+  &__counter {
+    font-family: var(--font_instrument);
+    font-weight: 800;
+    line-height: 1;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    color: var(--theme);
+  }
+
+  &__number {
+    font-size: 200px;
+    letter-spacing: -5px;
+
+    @media #{$md} {
+      font-size: 150px;
+    }
+
+    @media #{$xs} {
+      font-size: 100px;
+    }
+  }
+
+  &__unit {
+    font-size: 50px;
+    margin-left: 10px;
+    opacity: 0.5;
+    color: var(--white);
+
+    @media #{$xs} {
+      font-size: 30px;
+    }
+  }
+
+  &__panels {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 50;
+  }
+
+  &__panel {
+    width: 100%;
+    height: 50%;
+    background-color: #0c0d11;
+
+    &--top {
+      border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
+    }
+
+    &--bottom {
+      border-top: 0.5px solid rgba(255, 255, 255, 0.05);
+    }
+  }
+}

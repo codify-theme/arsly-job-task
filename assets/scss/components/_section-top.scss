@@ -1,0 +1,120 @@
+@use "../abstracts" as *;
+
+/*----------------------------------------*/
+/* section-top css (global)               */
+/*----------------------------------------*/
+
+.section-top {
+    text-align: center;
+    margin-bottom: 64px;
+
+    &.text-start {
+        text-align: left;
+
+        .section-top__subtitle {
+            justify-content: flex-start;
+        }
+    }
+
+    @media #{$md} {
+        margin-bottom: 40px;
+    }
+
+    @media #{$xs} {
+        margin-bottom: 30px;
+    }
+
+    &__subtitle {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font_kanit);
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 32px;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        color: var(--white);
+        margin-bottom: 24px;
+
+        &::before {
+            position: absolute;
+            content: "";
+            bottom: -8px;
+            left: 0%;
+            width: 100%;
+            height: 1px;
+            background-color: var(--border);
+        }
+
+        &::after {
+            position: absolute;
+            content: "";
+            bottom: -8px;
+            left: 0%;
+            width: 380px;
+            height: 1px;
+            background-color: var(--theme);
+        }
+
+        &--left {
+            justify-content: flex-start;
+        }
+
+        &--center {
+            justify-content: center;
+            text-align: center;
+
+            &::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        @media #{$md} {
+            font-size: 20px;
+            line-height: 28px;
+        }
+
+        @media #{$xs} {
+            font-size: 14px;
+            line-height: 20px;
+        }
+    }
+
+    &__title {
+        font-family: var(--font_teko);
+        font-weight: 600;
+        font-size: 100px;
+        line-height: 100px;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        color: var(--white);
+        margin: 0;
+
+        @media #{$xl} {
+            font-size: 80px;
+            line-height: 80px;
+        }
+
+        @media #{$lg} {
+            font-size: 70px;
+            line-height: 70px;
+        }
+
+        @media #{$md} {
+            font-size: 50px;
+            line-height: 50px;
+        }
+
+        @media #{$xs} {
+            font-size: 40px;
+            line-height: 40px;
+        }
+
+        span {
+            color: var(--theme);
+        }
+    }
+}

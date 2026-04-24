@@ -1,0 +1,59 @@
+@use "../abstracts" as *;
+
+/* ### BACKGROUND ANIMATION CSS ### */
+
+.bg-noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: -1;
+    mix-blend-mode: overlay;
+}
+
+.bg-blobs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    overflow: hidden;
+    background-color: var(--black);
+    pointer-events: none;
+}
+
+.bg-lines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    pointer-events: none;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.bg-line {
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.1), transparent);
+    position: relative;
+    overflow: hidden;
+
+    &__droplet {
+        position: absolute;
+        top: -150px;
+        left: 0;
+        width: 100%;
+        height: 150px;
+        background: linear-gradient(to bottom, transparent, var(--theme));
+        box-shadow: 0 0 10px var(--theme);
+    }
+}

@@ -1,0 +1,35 @@
+@use "../abstracts" as *;
+
+/* ### GSAP ANIMATION CLASSES ### */
+
+.char-item {
+    display: inline-block;
+    will-change: transform, opacity;
+    transform-origin: center bottom;
+    perspective: 1000px;
+}
+
+.word-anim {
+    overflow: hidden;
+}
+
+.reveal-item {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.projects__item img, .solutions__main-thumb img, .contact__shape img {
+    will-change: transform;
+    transition: none !important; /* Disable CSS transitions when GSAP is active */
+}
+
+#smooth-content {
+    overflow: visible !important;
+    width: 100%;
+}
+
+.parallax-wrap {
+    display: inline-block;
+    position: relative;
+    will-change: transform;
+}

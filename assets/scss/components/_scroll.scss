@@ -1,0 +1,225 @@
+@use "../abstracts" as *;
+
+// ### SCROLL CSS ###
+.scroll {
+  &__down {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    p {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 1.9;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    span {
+      width: 66px;
+      height: 106px;
+      border: 1px solid var(--black-6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 89px;
+
+      i {
+        color: var(--white);
+      }
+    }
+
+    &-wrapper {
+      height: 425px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @media #{$xl} {
+        height: 380px;
+      }
+
+      @media #{$lg} {
+        height: 350px;
+      }
+
+      @media #{$sm} {
+        height: auto;
+        padding: 40px 0;
+      }
+    }
+  }
+
+
+  &-top {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 15px;
+    bottom: 0px;
+    z-index: 9999;
+    background: var(--white);
+    border-radius: 100px;
+    mix-blend-mode: exclusion;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s;
+
+    &.showed {
+      opacity: 1;
+      visibility: visible;
+      bottom: 20px;
+    }
+  }
+}
+
+
+.go-top {
+  &-writer {
+    width: 105px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: left;
+    color: var(--white);
+    background-image: url(../images/writer/go-top.webp);
+    background-position: right center;
+    background-repeat: no-repeat;
+    right: 16%;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 9;
+    transition: all 0.5s;
+
+    @include dark {
+      color: var(--black);
+      background-image: url(../images/writer/go-top-light.webp);
+
+    }
+
+    &:hover {
+      color: var(--primary);
+    }
+
+    &.showed {
+      opacity: 1;
+      visibility: visible;
+      bottom: 20px;
+    }
+
+    br {
+      @media #{$sm} {
+        display: block;
+      }
+    }
+  }
+
+}
+
+
+// 
+.progress-wrap {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  display: block;
+  border-radius: 50%;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.8);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+  @media #{$xs} {
+    right: 20px;
+    bottom: 20px;
+    height: 44px;
+    width: 44px;
+  }
+
+  &.active-progress {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+
+  &:hover {
+    transform: translateY(-5px) scale(1.1);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--primary);
+    box-shadow: 0 15px 40px rgba(216, 120, 39, 0.25);
+
+    &::after {
+      color: var(--secondary);
+      transform: translate(-50%, -50%) translateY(-2px);
+    }
+
+    svg.progress-circle path {
+      stroke-opacity: 1;
+    }
+  }
+
+  &::after {
+    position: absolute;
+    content: '\f062';
+    font: var(--fa-font-solid);
+    text-align: center;
+    line-height: 1;
+    font-size: 18px;
+    color: var(--primary);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    transition: all 0.3s ease;
+  }
+
+  svg.progress-circle path {
+    fill: none;
+    stroke: var(--primary);
+    stroke-width: 4;
+    box-sizing: border-box;
+    transition: all 0.2s linear;
+    stroke-opacity: 0.6;
+  }
+}
+
+// Light Version (Adjusting if needed, but glassmorphism works well on both)
+.light {
+  .scroll__down {
+    p {
+      color: var(--black);
+    }
+
+    span {
+      border-color: var(--white);
+
+      i {
+        color: var(--black);
+      }
+    }
+  }
+
+  &.go-top-writer {
+    color: var(--black);
+    background-color: transparent;
+    background-image: url(../images/writer/go-top-light.webp);
+  }
+
+  .progress-wrap {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+
+    &::after {
+      color: var(--primary);
+    }
+  }
+}
+
