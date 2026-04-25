@@ -55,59 +55,88 @@
   if (preloader) {
     document.documentElement.classList.add('preloader-active');
 
-    const number = preloader.querySelector('.preloader__number');
+    const category = preloader.querySelector('.preloader__category');
+    const progress = preloader.querySelector('.preloader__progress');
+    const images = preloader.querySelectorAll('.preloader__img');
     const panelTop = preloader.querySelector('.preloader__panel--top');
     const panelBottom = preloader.querySelector('.preloader__panel--bottom');
     const inner = preloader.querySelector('.preloader__inner');
+    const categories = ["STRATEGY", "DIGITAL", "BRANDING", "CREATIVE", "STUDIO"];
 
     const tl = gsap.timeline();
 
-    // 1. Counter animation
-    let count = { value: 0 };
-    tl.to(count, {
-      value: 100,
-      duration: 2, // Slightly faster
-      ease: "power2.inOut",
-      onUpdate: () => {
-        if (number) {
-          number.textContent = Math.floor(count.value);
-          gsap.set(number, { filter: `blur(${Math.min(count.value / 10, 4)}px)` });
+    // 1. Cinematic Montage & Progress
+    images.forEach((img, index) => {
+      const startTime = index * 0.5;
+
+      // Swap Image & Text
+      tl.call(() => {
+        if (category) category.textContent = categories[index];
+      }, null, startTime);
+
+      tl.to(img, {
+        opacity: 1,
+        duration: 0.5,
+        ease: "power2.inOut"
+      }, startTime);
+
+      if (category) {
+        tl.fromTo(category, 
+          { opacity: 0, y: 20, filter: "blur(10px)" }, 
+          { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.4, ease: "power3.out" }, 
+          startTime
+        );
+      }
+
+      // Progress Bar Increment
+      tl.to(progress, {
+        scaleX: (index + 1) / images.length,
+        duration: 0.5,
+        ease: "power2.inOut"
+      }, startTime);
+
+      // Hide image when next one starts
+      if (index < images.length - 1) {
+        tl.to(img, {
+          opacity: 0,
+          duration: 0.2,
+          ease: "power2.in"
+        }, (index + 1) * 0.5);
+
+        if (category) {
+          tl.to(category, {
+            opacity: 0,
+            y: -10,
+            filter: "blur(10px)",
+            duration: 0.2
+          }, (index + 1) * 0.5);
         }
-      },
-      onComplete: () => {
-        if (number) gsap.to(number, { filter: "blur(0px)", duration: 0.2 });
       }
     });
 
-    // 2. Inner content scale & fade out
+    // 2. Final reveal sequence
     tl.to(inner, {
-      scale: 1.1,
       opacity: 0,
-      duration: 0.6,
+      scale: 1.05,
+      duration: 0.8,
       ease: "power3.inOut"
-    }, "+=0.1");
+    }, "+=0.3");
 
-    // 3. Split-Screen Reveal
     tl.to(panelTop, {
       yPercent: -100,
-      duration: 1,
+      duration: 1.4,
       ease: "expo.inOut"
-    }, "-=0.3");
+    }, "-=0.5");
 
     tl.to(panelBottom, {
       yPercent: 100,
-      duration: 1,
+      duration: 1.4,
       ease: "expo.inOut"
-    }, "<");
+    }, "-=1.4");
 
-    // 4. Hide & Remove preloader
-    tl.to(preloader, {
-      display: 'none',
-      duration: 0,
-      onComplete: () => {
-        document.documentElement.classList.remove('preloader-active');
-        preloader.remove();
-      }
+    tl.call(() => {
+      document.documentElement.classList.remove('preloader-active');
+      if (preloader) preloader.style.display = 'none';
     });
 
     // 5. Main content reveal
@@ -1283,81 +1312,45 @@
 
 
 
-  // Image Cliping Effect
-  document.addEventListener("DOMContentLoaded", () => {
-    const initialClipPaths = [
-      "polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%)",
-      "polygon(33.33% 0%, 33.33% 0%, 33.33% 0%, 33.33% 0%)",
-      "polygon(65.66% 0%, 66.66% 0%, 66.66% 0%, 66.66% 0%)",
-      "polygon(0% 33.33%, 0% 33.33%, 0% 33.33%, 0% 33.33%)",
-      "polygon(33.33% 33.33%, 33.33% 33.33%, 33.33% 33.33%, 33.33% 33.33%)",
-      "polygon(65.66% 33.33%, 66.66% 33.33%, 66.66% 33.33%, 66.66% 33.33%)",
-      "polygon(0% 66.66%, 0% 66.66%, 0% 66.66%, 0% 66.66%)",
-      "polygon(33.33% 66.66%, 33.33% 66.66%, 33.33% 66.66%, 33.33% 66.66%)",
-      "polygon(65.66% 66.66%, 66.66% 66.66%, 66.66% 66.66%, 66.66% 66.66%)"
-    ];
-    const finalClipPaths = [
-      "polygon(0% 0%, 34.33% 0%, 34.33% 34.33%, 0% 34.33%)",
-      "polygon(32.33% 0%, 66.66% 0%, 66.66% 33.33%, 33.33% 34.33%)",
-      "polygon(65.66% 0%, 100% 0%, 100% 33.33%, 65.66% 34.33%)",
-      "polygon(0% 33.33%, 33.33% 33.33%, 33.33% 66.66%, 0% 66.66%)",
-      "polygon(30.33% 33.33%, 66.66% 33.33%, 66.66% 66.66%, 33.33% 66.66%)",
-      "polygon(65.66% 33.33%, 100% 32.33%, 100% 66.66%, 65.66% 66.66%)",
-      "polygon(0% 65.66%, 33.33% 66.66%, 33.33% 100%, 0% 100%)",
-      "polygon(30.33% 66.66%, 66.66% 65.66%, 66.66% 100%, 33.33% 100%)",
-      "polygon(65.66% 66.66%, 100% 65.66%, 100% 100%, 65.66% 100%)"
-    ];
-    // Create mask divs for each wrapper
-    document.querySelectorAll(".tw-clip-anim").forEach(wrapper => {
-      const img = wrapper.querySelector(".tw-anim-img[data-animate='true']");
-      if (!img) return;
-      const url = img.src;
-      // Remove old masks if any (reuse safe)
-      wrapper.querySelectorAll(".mask").forEach(m => m.remove());
-      for (let i = 0; i < 9; i++) {
-        const mask = document.createElement("div");
-        mask.className = `mask mask-${i + 1}`;
-        Object.assign(mask.style, {
-          backgroundImage: `url(${url})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          position: "absolute",
-          inset: "0"
-        });
-        wrapper.appendChild(mask);
-      }
-    });
-    // Animate masks
-    gsap.utils.toArray(".tw-clip-anim").forEach(wrapper => {
-      const masks = wrapper.querySelectorAll(".mask");
-      if (!masks.length) return;
-      gsap.set(masks, { clipPath: (i) => initialClipPaths[i] });
-      const order = [
-        [".mask-1"],
-        [".mask-2", ".mask-4"],
-        [".mask-3", ".mask-5", ".mask-7"],
-        [".mask-6", ".mask-8"],
-        [".mask-9"]
-      ];
-      const tl = gsap.timeline({
-        scrollTrigger: { trigger: wrapper, start: "top 75%" }
-      });
-      order.forEach((targets, i) => {
-        const validTargets = targets
-          .map(c => wrapper.querySelector(c))
-          .filter(el => el); // filter out nulls
+  // Modern Image Reveal Effect
+  function initModernReveal() {
+    const revealContainers = document.querySelectorAll(".modern-reveal");
+    
+    revealContainers.forEach(container => {
+      const image = container.querySelector("img");
+      if (!image) return;
 
-        if (validTargets.length) {
-          tl.to(validTargets, {
-            clipPath: (j, el) => finalClipPaths[Array.from(masks).indexOf(el)],
-            duration: 1,
-            ease: "power4.out",
-            stagger: 0.1
-          }, i * 0.125);
+      // Add overlay if not present
+      if (!container.querySelector(".reveal-overlay")) {
+        const overlay = document.createElement("div");
+        overlay.className = "reveal-overlay";
+        container.appendChild(overlay);
+      }
+      
+      const overlay = container.querySelector(".reveal-overlay");
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: container,
+          start: "top 80%",
+          toggleActions: "play none none none"
         }
       });
+
+      tl.to(overlay, {
+        xPercent: 101,
+        duration: 1.2,
+        ease: "expo.inOut"
+      })
+      .to(image, {
+        scale: 1,
+        x: 0,
+        duration: 1.5,
+        ease: "expo.out"
+      }, "-=0.8");
     });
-  })
+  }
+  initModernReveal();
 
   // Parallax Effect for Buttons
   function parallaxEffect() {

@@ -36,14 +36,14 @@
     display: flex;
     justify-content: space-around;
     pointer-events: none;
-    opacity: 0.5;
+    opacity: 0.25;
     z-index: 1;
 }
 
 .bg-line {
     width: 1px;
     height: 100%;
-    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.1), transparent);
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.05), transparent);
     position: relative;
     overflow: hidden;
 

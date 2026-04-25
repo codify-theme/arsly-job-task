@@ -23,14 +23,12 @@
     <link rel="stylesheet" href="assets/vendor/animate.min.css">
     <link rel="stylesheet" href="assets/vendor/nice-select.css">
 
-    <!-- ### TEMPLATE MAIN CSS FILE ### -->
+    <!-- ### MAIN CSS FILE ### -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/themes/odometer-theme-default.css">
 </head>
 
 
-<body class="body-wrapper body-creative-agency">
+<body>
     <!-- ### BACKGROUND ANIMATION ### -->
     <div class="bg-noise"></div>
 
@@ -60,10 +58,20 @@
 
     <!-- ### PRELOADER ### -->
     <div id="preloader" class="preloader">
+        <div class="preloader__noise"></div>
         <div class="preloader__inner">
-            <div class="preloader__counter">
-                <span class="preloader__number">0</span>
-                <span class="preloader__unit">%</span>
+            <div class="preloader__images">
+                <img src="assets/images/projects/project-thumb1_1.png" alt="project" class="preloader__img">
+                <img src="assets/images/projects/project-thumb1_2.png" alt="project" class="preloader__img">
+                <img src="assets/images/projects/project-thumb1_3.png" alt="project" class="preloader__img">
+                <img src="assets/images/projects/project-thumb1_1.png" alt="project" class="preloader__img">
+                <img src="assets/images/projects/project-thumb1_2.png" alt="project" class="preloader__img">
+            </div>
+            <div class="preloader__content">
+                <h2 class="preloader__category">BRANDING</h2>
+                <div class="preloader__progress-wrap">
+                    <div class="preloader__progress"></div>
+                </div>
             </div>
         </div>
         <div class="preloader__panels">
@@ -87,7 +95,6 @@
                             <div class="projects__shape projects__shape--left">
                             </div>
                             <div class="projects__info">
-                                <span class="projects__index">0<span>01</span></span>
                                 <span class="projects__subtitle">Horizon Redesign</span>
                                 <h3 class="projects__name">Website UI/UX Design</h3>
                             </div>
@@ -110,7 +117,7 @@
                                 <div class="col-12">
                                     <div class="section-top projects__header">
                                         <h2 class="section-top__title move-anim" data-speed="1" data-direction="top"
-                                            data-opacity="true" data-gap="80" data-delay="2.6">
+                                            data-opacity="true" data-gap="80" data-delay="3.6">
                                             FEATURED WORKS</h2>
                                         <div class="projects__studio-tag">
                                             <span class="line"></span>
@@ -290,14 +297,12 @@
                                                     </div>
 
                                                     <div class="solutions__sub-thumbs">
-                                                        <div class="solutions__sub-thumb tw-clip-anim">
-                                                            <img class="tw-anim-img" data-animate="true"
-                                                                src="assets/images/solutions/solutions-thumb1_2.png"
+                                                        <div class="solutions__sub-thumb modern-reveal">
+                                                            <img src="assets/images/solutions/solutions-thumb1_2.png"
                                                                 alt="service">
                                                         </div>
-                                                        <div class="solutions__sub-thumb tw-clip-anim">
-                                                            <img class="tw-anim-img" data-animate="true"
-                                                                src="assets/images/solutions/solutions-thumb1_3.png"
+                                                        <div class="solutions__sub-thumb modern-reveal">
+                                                            <img src="assets/images/solutions/solutions-thumb1_3.png"
                                                                 alt="service">
                                                         </div>
                                                     </div>
@@ -347,14 +352,12 @@
                                                     </div>
 
                                                     <div class="solutions__sub-thumbs">
-                                                        <div class="solutions__sub-thumb tw-clip-anim">
-                                                            <img class="tw-anim-img" data-animate="true"
-                                                                src="assets/images/solutions/solutions-thumb1_3.png"
+                                                        <div class="solutions__sub-thumb modern-reveal">
+                                                            <img src="assets/images/solutions/solutions-thumb1_3.png"
                                                                 alt="service">
                                                         </div>
-                                                        <div class="solutions__sub-thumb tw-clip-anim">
-                                                            <img class="tw-anim-img" data-animate="true"
-                                                                src="assets/images/solutions/solutions-thumb1_1.png"
+                                                        <div class="solutions__sub-thumb modern-reveal">
+                                                            <img src="assets/images/solutions/solutions-thumb1_1.png"
                                                                 alt="service">
                                                         </div>
                                                     </div>
@@ -402,14 +405,12 @@
                                                     </div>
 
                                                     <div class="solutions__sub-thumbs">
-                                                        <div class="solutions__sub-thumb tw-clip-anim">
-                                                            <img class="tw-anim-img" data-animate="true"
-                                                                src="assets/images/solutions/solutions-thumb1_1.png"
+                                                        <div class="solutions__sub-thumb modern-reveal">
+                                                            <img src="assets/images/solutions/solutions-thumb1_1.png"
                                                                 alt="service">
                                                         </div>
-                                                        <div class="solutions__sub-thumb tw-clip-anim">
-                                                            <img class="tw-anim-img" data-animate="true"
-                                                                src="assets/images/solutions/solutions-thumb1_2.png"
+                                                        <div class="solutions__sub-thumb modern-reveal">
+                                                            <img src="assets/images/solutions/solutions-thumb1_2.png"
                                                                 alt="service">
                                                         </div>
                                                     </div>
@@ -479,7 +480,8 @@
                                     </div>
 
                                     <div class="contact__contact-info mb-50">
-                                        <a href="mailto:HELLO@WEBIXGMAIL.COM" class="contact__contact-item">[ HELLO@WEBIXGMAIL.COM ]</a>
+                                        <a href="mailto:HELLO@WEBIXGMAIL.COM" class="contact__contact-item">[
+                                            HELLO@WEBIXGMAIL.COM ]</a>
                                         <a href="tel:+1245678900" class="contact__contact-item">[ +12 4567 8900 ]</a>
                                     </div>
                                     <div class="contact__btn-wrap parallax-wrap">
@@ -506,7 +508,6 @@
     <script src="assets/vendor/jquery.magnific-popup.min.js"></script>
     <script src="assets/vendor/swiper-bundle.min.js"></script>
     <script src="assets/vendor/counter.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"></script>
     <script src="assets/vendor/progressbar.js"></script>
     <script src="assets/vendor/gsap.min.js"></script>
     <script src="assets/vendor/ScrollSmoother.min.js"></script>
@@ -517,11 +518,6 @@
     <script src="assets/vendor/backToTop.js"></script>
     <script src="assets/vendor/vanilla-tilt.min.js"></script>
 
-    <!-- End Cursor Pointer -->
-
-        </div>
-    </div>
-
     <!-- Back to top start -->
     <div class="progress-wrap">
         <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
@@ -530,7 +526,7 @@
     </div>
     <!-- Back to top end -->
 
-    <!-- Template Main JS File -->
+    <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
 
 </body>
